@@ -126,6 +126,13 @@ def main():
     print(f"Final on-surface     : {on_surface.sum():,} / {len(on_surface):,} "
           f"({on_surface.mean()*100:.1f}%)")
 
+    # ── Fill NaN coordinates with nearest valid value ─────────────────────────
+    # Samples with no homography have NaN x/y. MATLAB's interp1 does not skip
+    # NaN so we forward/backward fill to give placeholder coordinates.
+    # The invalid mask already excludes these samples from fixation/saccade detection.
+    gaze["gaze_x_screen_norm"] = gaze["gaze_x_screen_norm"].ffill().bfill()
+    gaze["gaze_y_screen_norm"] = gaze["gaze_y_screen_norm"].ffill().bfill()
+
     # ── Build output gaze CSV ─────────────────────────────────────────────────
     gaze_out = pd.DataFrame({
         "timestamp"              : gaze["gaze_timestamp_ns"].values,
