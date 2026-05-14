@@ -1,0 +1,16 @@
+av==17.0.1
+fsspec==2026.4.0
+numpy==2.4.4
+opencv-python==4.13.0.92
+packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1777103621/work
+pandas==3.0.3
+pathlib_abc==0.5.2
+protobuf==7.34.1
+pupil-labs-neon-recording==2.1.4
+pupil-labs-video==1.0.11
+pupil_apriltags==1.0.4.post11
+python-dateutil==2.9.0.post0
+scipy==1.17.1
+six==1.17.0
+tzdata==2026.2
+universal_pathlib==0.3.10
