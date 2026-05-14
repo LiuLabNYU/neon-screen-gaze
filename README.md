@@ -2,8 +2,6 @@
 
 A Python pipeline for mapping Neon eye tracker gaze data onto a screen surface using AprilTag markers, with improved detection stability over the built-in Neon Player surface tracker.
 
-**Author:** Forouzan Farahani, Liu Lab, NYU Langone Health
-
 ---
 
 ## The Problem
@@ -21,13 +19,6 @@ This pipeline replaces the Neon Player surface tracker with a custom Python impl
 - **Caches detection results** to disk so re-runs are instant
 - Outputs a clean CSV with per-gaze-sample screen coordinates and quality flags
 
-## Results on Example Recording
-
-| Metric | Value |
-|---|---|
-| Scene frames with tags detected | 98.1% |
-| Frames passing quality filters | 94.6% |
-| Gaze samples mapped on-surface | 90.3% |
 
 ## Requirements
 
@@ -99,7 +90,7 @@ For best results:
 - Use `tag36h11` family AprilTags (IDs 0, 1, 2, 3)
 - Render markers **on-screen** as part of your stimulus (not physical printouts)
 - Place one tag in each corner of the display window
-- Use a tag size of at least 80×80 screen pixels with a white quiet zone around each tag
+- Use a tag size of at least (waiting to get a response from Pupil Lab) screen pixels with a white quiet zone around each tag
 - Keep the same tag IDs across all recordings so the surface definition is consistent
 
 ## Output CSV columns
@@ -125,11 +116,6 @@ For best results:
 4. **Outlier rejection** — frames where the projected surface area or aspect ratio deviates more than 5 median absolute deviations from the recording median are rejected.
 5. **Gaze mapping** — each gaze sample (already in scene-camera pixel coordinates) is undistorted using the Neon scene camera calibration, then projected onto the screen using the inverse homography.
 
-## Citation
-
-If you use this pipeline in your research, please cite it as:
-
-> Farahani, F. (2026). neon-screen-gaze: Improved gaze-to-screen mapping for the Neon eye tracker. GitHub. https://github.com/forouzanfarahani/neon-screen-gaze
 
 ## License
 
